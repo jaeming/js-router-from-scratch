@@ -1,21 +1,25 @@
 var routes = {
-  root: 'page-1.html'
+  root:  {title: 'Home',              url: '/home'},
+  topics: {title: 'Posts and Things', url: '/topics'},
+  etc:   {title: 'Etcetera',          url: '/etc'},
 }
 
 function initialize() {
-  fetchContent(routes.root);
+  fetchContent(routes.root.url);
 }
 
 var links = document.querySelectorAll('[data-link]');
 links.forEach(function(link) {
-  link.addEventListener("click", linkTo, this)
+  link.addEventListener("click", linkTo, false)
 });
 
-function linkTo(link) {
-  link.preventDefault();
-  var linkAddress = link.target.dataset.link;
-  fetchContent(linkAddress);
-  history.pushState(linkAddress, linkAddress, linkAddress);
+function linkTo(evt) {
+  evt.preventDefault();
+  var link = evt.target.dataset.link;
+  var url = routes[link].url;
+  var title = routes[link].title;
+  fetchContent(url);
+  history.pushState(url, title, url);
 }
 
 function render(body) {
