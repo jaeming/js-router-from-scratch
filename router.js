@@ -6,10 +6,10 @@ function initialize() {
   fetchContent(routes.root);
 }
 
-var links = document.querySelectorAll('[data-link]')
-for (var i=0;i<links.length;i++) {
-  this.addEventListener("click", linkTo, this);
-}
+var links = document.querySelectorAll('[data-link]');
+links.forEach(function(link) {
+  link.addEventListener("click", linkTo, this)
+});
 
 function linkTo(link) {
   link.preventDefault();
