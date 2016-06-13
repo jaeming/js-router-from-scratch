@@ -1,7 +1,7 @@
 var routes = {
-  root:  {title: 'Home',              url: '/home'},
-  topics: {title: 'Posts and Things', url: '/topics'},
-  etc:   {title: 'Etcetera',          url: '/etc'},
+  root:   {title: 'Home',              url: '/home'},
+  topics: {title: 'Posts and Things',  url: '/topics'},
+  etc:    {title: 'Etcetera',          url: '/etc'},
 }
 
 function initialize() {
