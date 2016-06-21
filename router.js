@@ -6,7 +6,6 @@ var routes = {
 
 function initialize() {
   fetchContent(routes.root.url);
-  getLinks();
 }
 
 function getLinks() {
@@ -18,12 +17,10 @@ function getLinks() {
 }
 
 function linkTo(evt) {
-  console.log('triggered');
   evt.preventDefault();
   var link = evt.target.dataset.link;
   var url = routes[link].url;
   var title = routes[link].title;
-  console.log(url);
   fetchContent(url);
   history.pushState(url, title, url);
 }
