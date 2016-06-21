@@ -6,18 +6,24 @@ var routes = {
 
 function initialize() {
   fetchContent(routes.root.url);
+  getLinks();
 }
 
-var links = document.querySelectorAll('[data-link]');
-links.forEach(function(link) {
-  link.addEventListener("click", linkTo, false)
-});
+function getLinks() {
+  console.log('getting links');
+  var links = document.querySelectorAll('[data-link]');
+  links.forEach(function(link) {
+    link.addEventListener("click", linkTo, false)
+  });
+}
 
 function linkTo(evt) {
+  console.log('triggered');
   evt.preventDefault();
   var link = evt.target.dataset.link;
   var url = routes[link].url;
   var title = routes[link].title;
+  console.log(url);
   fetchContent(url);
   history.pushState(url, title, url);
 }
@@ -25,6 +31,7 @@ function linkTo(evt) {
 function render(body) {
   var outlet = document.getElementById('render');
   outlet.innerHTML = body;
+  getLinks();
 }
 
 function fetchContent(link) {
